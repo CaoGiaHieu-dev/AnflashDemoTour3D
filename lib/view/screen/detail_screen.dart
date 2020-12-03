@@ -16,6 +16,41 @@ class _DetailScreen extends State<DetailScreen>
   {
     return Scaffold
     (
+      floatingActionButton: FloatingActionButton
+      (
+        onPressed: ()
+        {
+          showDialog
+          (
+            context: context,
+            builder: (context)
+            {
+              return AlertDialog
+              (
+                actions: <Widget>
+                [
+                  RaisedButton
+                  (
+                    onPressed: () 
+                    {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.close),
+                  ),
+                ],
+                content: Text
+                (
+                  "This is content"
+                ),
+              );
+            },
+          );
+        },
+        child: Icon
+        (
+          Icons.info
+        ),
+      ),
       appBar: AppBar
       (
       
