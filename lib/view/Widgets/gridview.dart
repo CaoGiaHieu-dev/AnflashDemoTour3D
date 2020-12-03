@@ -23,7 +23,6 @@ class GridViewWidget extends StatefulWidget
 
 class _GridViewWidget extends State<GridViewWidget>
 {
-  Offset _offset;
   @override 
   Widget build(BuildContext context)
   {
@@ -51,6 +50,8 @@ class _GridViewWidget extends State<GridViewWidget>
           [
             Container
             (
+              width: this.widget.size.width,
+              height: this.widget.size.height,
               color: Colors.lightBlue,
               child: Image.asset("lib/assets/images/tile_0$currentTile.png"),
             ),

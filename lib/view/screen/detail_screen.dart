@@ -18,7 +18,7 @@ class _DetailScreen extends State<DetailScreen>
     (
       appBar: AppBar
       (
-        
+      
       ),
       body: Panorama
       (

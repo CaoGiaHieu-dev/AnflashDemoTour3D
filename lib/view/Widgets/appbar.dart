@@ -1,15 +1,14 @@
+
 import 'package:flutter/material.dart';
 
 class AppbarWidget extends StatefulWidget
 {
-
   @override 
   _AppbarWidget createState() => _AppbarWidget();
 }
 
 class _AppbarWidget extends State<AppbarWidget>
 {
-
   @override
   Widget build(BuildContext context)
   {

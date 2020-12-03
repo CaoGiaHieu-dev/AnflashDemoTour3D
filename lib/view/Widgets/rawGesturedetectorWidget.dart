@@ -85,19 +85,23 @@ class _RawGestureDetectorWidget extends State<RawGestureDetectorWidget>
     return RawGestureDetector
     (
       gestures: _gestures,
-      child: Container
+      child: Padding
       (
-        child: Transform
+        padding: const EdgeInsets.all(8.0),
+        child: SafeArea
         (
-          alignment: _alignment,
-          transform: _transform,
-          child: ScrollConfiguration
+          child: Transform
           (
-            behavior: RemoveScollGlow(),
-            child: Padding
+            alignment: _alignment,
+            transform: _transform,
+            child: ScrollConfiguration
             (
-              padding: EdgeInsets.all(20.0),
-              child: this.widget.child,
+              behavior: RemoveScollGlow(),
+              child: Padding
+              (
+                padding: EdgeInsets.all(20.0),
+                child: this.widget.child,
+              ),
             ),
           ),
         ),

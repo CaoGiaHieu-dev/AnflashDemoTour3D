@@ -1,7 +1,9 @@
+
 import 'package:animation3d/core/viewmodels/floorplan_model.dart';
 import 'package:animation3d/view/Widgets/appbar.dart';
 import 'package:animation3d/view/Widgets/gridview.dart';
 import 'package:animation3d/view/Widgets/rawGesturedetectorWidget.dart';
+import 'package:animation3d/view/Widgets/swipeview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -23,15 +25,28 @@ class _MyHomePageState extends State<MyHomePage>
   @override
   Widget build(BuildContext context) 
   {
+    final _images = ["https://lorempixel.com/640/480/sports","https://lorempixel.com/640/480/sports"];
     final model = Provider.of<FloorPlanModel>(context);
     final Size size = MediaQuery.of(context).size;
+    bool _scale = false;
     return Scaffold
     (
       backgroundColor: Colors.white,
       appBar: PreferredSize
       (
         preferredSize: Size.fromHeight(100.0),
-        child: AppbarWidget(),
+        child: AppbarWidget()
+      ),
+      floatingActionButton: FloatingActionButton
+      (
+        onPressed: () =>
+        {
+          model.reset()
+        },
+        child: Icon
+        (
+          Icons.refresh
+        ),
       ),
       body: ClipRRect
       (
@@ -42,27 +57,52 @@ class _MyHomePageState extends State<MyHomePage>
         ),
         child: Container
         (
-          color: Colors.lightBlueAccent,
-          child: Center
+          color: Colors.lightBlue,
+          child: Column
           (
-            child: Stack
-            (
-              alignment: Alignment.center,
-              children: <Widget>
-              [
-                RawGestureDetectorWidget
+            children: <Widget>
+            [
+              Container
+              (
+                height: size.height * 0.25,
+
+                child: SwipeViewWidget
                 (
-                  size: size,
-                  model: model,
-                  child:  GridViewWidget
+                  itemsWidth : size.width,
+                  swipeList: _images,
+                ),
+              ),
+              Container
+              (
+                
+                height: size.height * 0.5,
+                child: Center
+                (
+                  child :RawGestureDetectorWidget
                   (
                     size: size,
-                    model : model,
-                    scale : model.isScaled,
+                    model: model,
+                    child:  GridViewWidget
+                    (
+                      size: size,
+                      model : model,
+                      scale : model.isScaled,
+                    ),
                   ),
-                ),
-              ],
-            ),
+                )
+              )
+                // child :RawGestureDetectorWidget
+                // (
+                //   size: size,
+                //   model: model,
+                //   child:  GridViewWidget
+                //   (
+                //     size: size,
+                //     model : model,
+                //     scale : model.isScaled,
+                //   ),
+                // ),
+            ],
           )
         ),
       )
